@@ -2,13 +2,22 @@
 # até acertar, depois o programa vai mostrar quantas vezes
 # ele tentou até acertar
 
-from random import sorted
-jogador = int(input('Digite um número de 0 a 5: '))
-computador = sorted(0, 5)
+from random import randint
+computador = randint(0, 10)
+print('Sou seu computador, escolhi um número entre 0 e 10.')
+print('Tente adivinhar!')
 
-print(f'A máquina escolheu: {computador}')
-print(f'Sua escolha foi: {jogador}')
-if jogador == computador:
-  print('Você venceu!')
-else:
-  print('Computador venceu!')
+acertou = False
+palpites = 0
+while not acertou:
+  jogador = int(input('Digite seu palpite: '))
+  palpites += 1
+  if jogador == computador:
+    print(f'Você venceu na primeira tentativa! Parabéns!')
+    acertou = True
+  else:
+    if jogador < computador:
+      print('Mais... Tente mais uma vez.')
+    elif jogador > computador:
+      print('Menos... Tente mais uma vez.')
+print(f'Você venceu depois de {palpites} tentativa(s).')
